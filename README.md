@@ -27,5 +27,6 @@ Development environment: Linux. Python3 and pip should be installed
 * Clone this repository
 * Create a `.env` file in the root of your project and add the following variables
     * SECRET_KEY=`<some_secret_key>`
+* Change the last line of the Dockerfile from `CMD gunicorn --bind 0.0.0.0:$PORT server:app` to `ENTRYPOINT [ "gunicorn", "-b", "0.0.0.0:8080", "server:app" ]
 * Build a local Docker image by running the command `docker build -t <preferred-image-name> .`. Take care to not omit the full stop in the command
 * After the image builds successfully, you can create and run a Docker container from the image by running `docker run --name <preferred-container-name> --env-file=.env -p 8000:8080 <preferred-image-name>`. This exposes port 8080 of the container where the application is running (check Dockerfile if in doubt) to port 8000 on your host machine. You can now access the web application at `http://localhost:8000`.
