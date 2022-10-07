@@ -15,4 +15,4 @@ COPY . /app
 WORKDIR /app
 RUN chmod +x /app/mold2/Mold2
 RUN pip3 install -r requirements.txt
-ENTRYPOINT [ "gunicorn", "-b", "0.0.0.0:8080", "server:app" ]
+CMD gunicorn --bind 0.0.0.0:$PORT server:app
