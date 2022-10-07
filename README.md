@@ -1,5 +1,5 @@
 # DimPo Pred: A Machine Learning Web Application
-Deployment of Machine learning models built [here](https://github.com/dopewevmond/fyp) using Flask and containerized using Docker.
+Deployment of machine learning models built [here](https://github.com/dopewevmond/fyp) with Flask and containerized with Docker. Allows users to input the canonical SMILES of a compound and predict the activity of the compound on human alpha-Glucosidase enzyme. Active compounds can serve as drug candidates for the treatment of _diabetes mellitus_ (inhibitory action) and Pompe disease (activatory action).
 
 ## High level overview of how it works
 * Users input canonical SMILES of the compound whose activity they want to predict using the ML models
