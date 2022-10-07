@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="mb-5 py-3 px-5 rounded bg-white">
+        <div class="dark-text size-h2-thin mb-4">PREDICT THE ACTIVITY OF A COMPOUND</div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="mb-3 dark-text">
+                {{ form.smiles.label(class="form-label bold-text") }}
+                {{ form.smiles(class="form-control", id="smiles", placeholder="CCCCC1=CC(=O)OC2=C1C=CC(=C2CN3CCCC3)O") }}
+                {% for error in form.smiles.errors %}
+                    <div class="alert alert-danger p-0 mb-0">{{ error }}</div>
+                {% endfor %}
+                <div id="emailHelp" class="form-text">Enter the SMILES of the compound you want to predict</div>
+            </div> 
+
+            <div class="mb-3 dark-text">
+                {{ form.model.label(class="form-label bold-text") }}
+                {{ form.model(class="form-control") }}
+                <div id="emailHelp" class="form-text">Select the algorithm to use for the prediction</div>
+            </div> 
+
+            <div class="mb-3 dark-text">
+                {{ form.class_to_pred.label(class="form-label bold-text") }}
+                {{ form.class_to_pred(class="form-control") }}
+                <div id="emailHelp" class="form-text">Select the action of the compound on alpha-Glucosidase to predict</div>
+            </div> 
+
+            <div class="mb-3 dark-text">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+            
+        </form>
+    </div>
+
+  {% if results %}
+    <div class="mb-5 py-3 px-5 rounded bg-white">
+      <div class="dark-text size-h2-thin mb-4">RESULTS</div>
+
+      <!-- creating a div for the SMILES -->
+      <div class="mb-3 dark-text">
+        <div class="bold-text">SMILES</div>
+        <div class="">{{ results.smiles }}</div>
+      </div>
+      
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Model Used</th>
+              <th scope="col">Activity Type</th>
+              <th scope="col">Activity</th>
+              <th scope="col">Confidence</th>
+              <th scope="col">AD Analysis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ results.model }}</td>
+              <td>{{ results.type_of_activity }}</td>
+              <td>{{ results.activity }}</td>
+              <td>{{ results.confidence }}</td>
+              <td>N/A</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>  
+  {% endif %}
+
+{% endblock %}

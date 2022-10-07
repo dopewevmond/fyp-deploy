@@ -1,0 +1,1 @@
+java -cp Mold2.jar Mold2

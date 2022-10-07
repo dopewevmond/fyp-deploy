@@ -1,0 +1,65 @@
+:root {
+    --primary-color: #caebf2;
+    --secondary-color: #f50057;
+    --success-color: #43a047;
+    --info-color: #00acc1;
+    --warning-color: #ffb300;
+    --danger-color: #d32f2f;
+    --light-color: #f5f5f5;
+    --dark-color: #212121;
+    --text-color: #212121;
+    --text-light-color: #f5f5f5;
+}
+
+/* Language: css */
+/* Path: app\static\css\styles.css */
+body {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+/* Language: css */
+/* Path: app\static\css\styles.css */
+a {
+    color: var(--primary-color);
+}
+
+/* Language: css */
+/* Path: app\static\css\styles.css */
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Language: css */
+/* Path: app\static\css\styles.css */
+a:active {
+    color: var(--danger-color);
+}
+
+/* Language: css */
+/* Path: app\static\css\styles.css */
+a:visited {
+    color: var(--info-color);
+}
+
+.dark-text {
+    color: var(--text-color);
+}
+.bold-text {
+    font-weight: bold;
+}
+.size-h2-thin {
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+/* adding a class to create a pill for the active nav link */
+.active {
+    background-color: var(--primary-color);
+    color: var(--text-light-color);
+}
+
+/* changing the padding of the navbar brand */
+.navbar-brand {
+    padding: 0.5rem 1rem;
+}
