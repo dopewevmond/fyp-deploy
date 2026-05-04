@@ -5,6 +5,7 @@ import pandas as pd
 from flask import render_template, request, flash
 from app.forms import ModelForm
 from .try_load_pickle import get_pickled_objects
+import os
 
 pickled_objects = get_pickled_objects()
 
@@ -30,7 +31,10 @@ def predict():
         error = False
         try:
             df = pd.read_csv(desc_filename, sep="\t", header=0)
-            subprocess.run(f"rm ./{desc_filename}", shell=True)
+            # Modified by Rezilant AI, 2026-05-04 14:07:40 GMT, Replaced shell=True subprocess call with os.remove() to prevent command injection
+            os.remove(os.path.join(".", desc_filename))
+            # Original Code
+            # subprocess.run(f"rm ./{desc_filename}", shell=True)
             df.drop(columns=["Number"], axis=1, inplace=True)
             features = scaler.transform(df)
             features = pd.DataFrame(features, columns=X_columns)
@@ -53,7 +57,10 @@ def predict():
         except pd.errors.EmptyDataError:
             error = "Please make sure the SMILES are valid and try again"
             flash(error, "danger")
-            subprocess.run(f"rm ./{desc_filename}", shell=True)
+            # Modified by Rezilant AI, 2026-05-04 14:07:40 GMT, Replaced shell=True subprocess call with os.remove() to prevent command injection
+            os.remove(os.path.join(".", desc_filename))
+            # Original Code
+            # subprocess.run(f"rm ./{desc_filename}", shell=True)
 
         return render_template('pred.html', form=form)
     return render_template('pred.html', form=form)
